@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('clientes', [ClienteController::class, 'index']);
+// Route::get('clientes/edit', [ClienteController::class, 'edit']);
+
+Route::resource('clientes', 'App\Http\Controllers\ClienteController');
+
+Route::resource('coches', 'App\Http\Controllers\CocheController');
