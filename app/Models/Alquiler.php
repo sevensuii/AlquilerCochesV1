@@ -12,4 +12,14 @@ class Alquiler extends Model
     use SoftDeletes;
 
     protected $table = 'alquileres';
+
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
+
+    public function coche()
+    {
+        return $this->belongsTo(Coche::class);
+    }
 }

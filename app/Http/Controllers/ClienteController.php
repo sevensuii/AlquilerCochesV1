@@ -15,6 +15,8 @@ class ClienteController extends Controller
     public function index()
     {
         //
+        $clientes=Cliente::orderBy("id")->get();
+        return view("clientes.index",compact("clientes"));
     }
 
     /**
@@ -25,6 +27,7 @@ class ClienteController extends Controller
     public function create()
     {
         //
+        return view('clientes.create');
     }
 
     /**
@@ -36,6 +39,10 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=$request->all();
+        $datos['id']=uniqid();
+        Cliente::create($datos);
+        return redirect('/clientes');
     }
 
     /**
@@ -55,9 +62,11 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
         //
+        $cliente=Cliente::find($id);
+		return view("clientes.create",compact("cliente"));
     }
 
     /**
@@ -67,9 +76,12 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
         //
+        $datos=$request->all();
+        Cliente::find($id)->update($datos);
+        return redirect('/clientes');
     }
 
     /**
@@ -78,8 +90,16 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
         //
+        $cliente=Cliente::find($id);
+        if ($cliente) {
+            $cliente->delete();
+            return 'ok';
+        }
+        else {
+            return 'error';
+        }
     }
 }

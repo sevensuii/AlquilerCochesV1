@@ -15,6 +15,8 @@ class CocheController extends Controller
     public function index()
     {
         //
+        $coches=Coche::orderBy("id")->get();
+        return view("coches.index",compact("coches"));
     }
 
     /**
@@ -25,6 +27,7 @@ class CocheController extends Controller
     public function create()
     {
         //
+        return view('clientes.create');
     }
 
     /**
@@ -36,6 +39,10 @@ class CocheController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=$request->all();
+        $datos['id']=uniqid();
+        Coche::create($datos);
+        return redirect('/coches');
     }
 
     /**
@@ -55,9 +62,11 @@ class CocheController extends Controller
      * @param  \App\Models\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coche $coche)
+    public function edit($id)
     {
         //
+        $coche=Coche::find($id);
+		return view("coches.create",compact("coche"));
     }
 
     /**
@@ -67,9 +76,12 @@ class CocheController extends Controller
      * @param  \App\Models\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coche $coche)
+    public function update(Request $request, $id)
     {
         //
+        $datos=$request->all();
+        Coche::find($id)->update($datos);
+        return redirect('/coches');
     }
 
     /**
@@ -78,8 +90,16 @@ class CocheController extends Controller
      * @param  \App\Models\Coche  $coche
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coche $coche)
+    public function destroy($id)
     {
         //
+        $coche=Coche::find($id);
+        if ($coche) {
+            $coche->delete();
+            return 'ok';
+        }
+        else {
+            return 'error';
+        }
     }
 }
