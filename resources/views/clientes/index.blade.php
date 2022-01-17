@@ -3,9 +3,9 @@
 
 
 @section("contenido")
-<!-- <a href='{{url("clientes/restore")}}' class="btn btn-info">Restaurar</a>
-<a href='{{url("clientes/eliminar")}}' class="btn btn-danger">Borrado Definitivo</a> -->
-<h1>Usuarios</h1>
+<h1 class="text-3xl text-white">Clientes</h1>
+<a href="{{route('clientes.create')}}" class="btn btn-success my-4">+ Insertar</a>
+<a href="{{route('clientes.pdf')}}" class="btn btn-warning my-4">Generar PDF</a>
 <table id="tabla" style="text-align: center;">
 	<thead>
 		<tr><th>Nombre</th><th>Apellidos</th><th>DNI</th><th>Fecha de Nacimiento</th><th>Edad</th><th>Correo</th><th>Dirección</th><th>Borrar</th><th>Editar</th></tr>

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
+use Carbon\Carbon;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,7 @@ Route::get('/', function () {
 // Route::get('clientes', [ClienteController::class, 'index']);
 // Route::get('clientes/edit', [ClienteController::class, 'edit']);
 
+Route::get("clientes/pdf",[ClienteController::class, 'listadoPdf'])->name('clientes.pdf');
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 
 Route::resource('coches', 'App\Http\Controllers\CocheController');

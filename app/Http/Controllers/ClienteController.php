@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use PDF;
 
 class ClienteController extends Controller
 {
@@ -12,6 +13,13 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function listadoPDF() {
+        $clientes = Cliente::orderBy('id')->limit(30)->get();
+        $pdf = PDF::loadView('clientes.pdf', compact("clientes"));
+        return $pdf->download('lista_clientes.pdf');
+    }
+
     public function index()
     {
         //
