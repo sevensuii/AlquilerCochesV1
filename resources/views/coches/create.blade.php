@@ -12,7 +12,7 @@
   </div>
   <div class="form-group">
     <label for="codigo">Matrícula</label>
-    <input type="text" class="form-control" id="nombre" name="matricula"  value='{{$coche->matricula??''}}'>
+    <input type="text" class="form-control" id="nombre" name="matricula"  value='{{$coche->matricula??''}}' placeholder="0000-XXX">
   </div>
   <div class="form-group">
     <label for="codigo">Marca</label>
@@ -28,7 +28,7 @@
   </div>
   <div class="form-group">
     <label for="codigo">Combustible</label>
-    <input type="text" class="form-control" id="codigo" name="combustible"  value='{{$coche->combustible??''}}' placeholder="XXXX-A">
+    <input type="text" class="form-control" id="codigo" name="combustible"  value='{{$coche->combustible??''}}' placeholder="">
   </div>
 	<div class="form-group">
     <label for="codigo">Obersvaciones</label>

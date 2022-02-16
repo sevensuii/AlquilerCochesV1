@@ -27,7 +27,7 @@ class CocheController extends Controller
     public function create()
     {
         //
-        return view('clientes.create');
+        return view('coches.create');
     }
 
     /**
@@ -39,6 +39,14 @@ class CocheController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'año' => 'required|max:4|min:4',
+            'matricula' => 'regex:/^[0-9]{4}-[a-zA-Z]{3}$/i',
+            'observaciones' => 'required|min:5|max:255',
+        ]);
+
+
+
         $datos=$request->all();
         $datos['id']=uniqid();
         Coche::create($datos);

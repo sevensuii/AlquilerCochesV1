@@ -6,8 +6,8 @@
 <!-- <a href='{{url("coches/restore")}}' class="btn btn-info">Restaurar</a>
 <a href='{{url("coches/eliminar")}}' class="btn btn-danger">Borrado Definitivo</a> -->
 <h1 class="text-3xl text-white">Coches</h1>
-<a href="{{route('clientes.create')}}" class="btn btn-success my-4">+ Insertar</a>
-<a href="{{route('clientes.pdf')}}" class="btn btn-warning my-4">Generar PDF</a>
+<a href="{{route('coches.create')}}" class="btn btn-success my-4">+ Insertar</a>
+<!-- <a href="{{route('clientes.pdf')}}" class="btn btn-warning my-4">Generar PDF</a> -->
 <table id="tabla" style="text-align: center;">
 	<thead>
 		<tr><th>Matrícula</th><th>Marca</th><th>Modelo</th><th>Año</th><th>Combustible</th><th>Observaciones</th><th>Borrar</th><th>Editar</th></tr>

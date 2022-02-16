@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use PDF;
+use App\Mail\TestMail;
 
 class ClienteController extends Controller
 {
@@ -26,7 +27,6 @@ class ClienteController extends Controller
         $clientes=Cliente::orderBy("id")->get();
         return view("clientes.index",compact("clientes"));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -47,6 +47,16 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'nombre' => 'required|string',
+            'apellidos' => 'required|string',
+            'dni' => 'required|regex:/^[0-9]{8}[a-zA-Z]$/i',
+        ]);
+
+
+
+
+
         $datos=$request->all();
         $datos['id']=uniqid();
         Cliente::create($datos);
@@ -87,6 +97,13 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        $validated = $request->validate([
+            'nombre' => 'required|string',
+            'apellidos' => 'required|string',
+            'dni' => 'required|regex:/^[0-9]{8}[a-zA-Z]$/i',
+        ]);
+
         $datos=$request->all();
         Cliente::find($id)->update($datos);
         return redirect('/clientes');

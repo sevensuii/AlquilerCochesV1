@@ -24,7 +24,7 @@
   </div>
   <div class="form-group">
     <label for="codigo">Fecha de nacimiento</label>
-    <input type="text" class="form-control" id="calorias" name="f_nac"  value='{{$cliente->f_nac??''}}'>
+    <input type="date" class="form-control" id="calorias" name="f_nac"  value='{{$cliente->f_nac??''}}'>
   </div>
   <div class="form-group">
     <label for="codigo">Correo</label>

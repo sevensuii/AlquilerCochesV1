@@ -16,7 +16,8 @@
 			<td>{{$cliente->nombre}}</td>
 			<td>{{$cliente->apellidos}}</td>
 			<td>{{$cliente->dni}}</td>
-			<td>{{$cliente->f_nac}}</td>
+<!-- 			<td>{{$cliente->f_nac}}</td> -->
+			<td>{{date('d/m/Y', strtotime($cliente->f_nac))}}</td>
 			<td>{{$cliente->age}}</td>
 			<td>{{$cliente->correo}}</td>
 			<td>{{$cliente->direccion}}</td>
